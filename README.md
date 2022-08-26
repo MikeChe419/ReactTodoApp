@@ -1,6 +1,6 @@
 # Getting Started with Create React App
 
-Ежедневник дел. Приложение реализовано с применением библиотеки React. Реализованы функции добавления дела, отметки о выполнении, удаленияю
+Ежедневник дел. Приложение реализовано с применением библиотеки React. Реализованы функции добавления дела, отметки о выполнении, удаления.
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
