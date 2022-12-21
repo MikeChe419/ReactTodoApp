@@ -1,72 +1,120 @@
-# Getting Started with Create React App
+Учебная задача ежедневник. Настройка модулей webpack
+Настройка Webpack под React проект без SSR, HMR
+Установка React /не имеет отношения к настройке сборщика/ Источник инф. https://reactjs.org/ https://github.com/facebook/react https://www.npmjs.com/package/react
 
-Ежедневник дел. Приложение реализовано с применением библиотеки React. Реализованы функции добавления дела, отметки о выполнении, удаления.
+npm i react
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+и react-dom Источник инф. https://www.npmjs.com/package/react-dom
 
-## Available Scripts
+npm install react-dom
 
-In the project directory, you can run:
+вместе
 
-### `npm start`
+npm install react react-dom
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Установка TS /не имеет отношения к настройке сборщика/ Источник инф. https://www.typescriptlang.org/download https://www.npmjs.com/package/typescript
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+    npm install typescript --save-dev
+Конфигурация TS Создание конфигурационного файла typescript - tsconfig.json
 
-### `npm test`
+tsc --init
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Установка пакета Webpack
+Источник инф. https://webpack.js.org/guides/getting-started/
 
-### `npm run build`
+```
+    npm install webpack webpack-cli --save-dev
+```
+Установка ts-loader
+Источник инф. https://github.com/TypeStrong/ts-loader
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+```
+    npm install ts-loader --save-dev
+```
+Вместе npm i -D typescript ts-loader
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+====
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Для настройки Webpack существует файл, в корне проекта webpack.config.js - создается вручную
 
-### `npm run eject`
+https://webpack.js.org/guides/getting-started/#using-a-configuration
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+Хорошая статья для понимания переменных окружения в node.js
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+https://medium.com/@hydrock/%D0%BF%D0%B5%D1%80%D0%B5%D0%BC%D0%B5%D0%BD%D0%BD%D1%8B%D0%B5-%D0%BE%D0%BA%D1%80%D1%83%D0%B6%D0%B5%D0%BD%D0%B8%D1%8F-%D0%B2-%D0%BF%D1%80%D0%B8%D0%BB%D0%BE%D0%B6%D0%B5%D0%BD%D0%B8%D0%B8-node-js-e9ca2131e6b6
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+===
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+Для того, чтобы dist создать html бандл собраный из html модулей и вставить скрипт js бандла воспользуемся
 
-## Learn More
+HtmlWebpackPlugin - https://webpack.js.org/plugins/html-webpack-plugin/
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+npm install --save-dev html-webpack-plugin
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+Конфигурация
 
-### Code Splitting
+https://github.com/jantimon/html-webpack-plugin#options
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+док-ция по свойству template
 
-### Analyzing the Bundle Size
+https://github.com/jantimon/html-webpack-plugin/blob/main/docs/template-option.md
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+====
 
-### Making a Progressive Web App
+Написание скриптов для запуска различных конфигураций webpack
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+Используем свойство scripts в package.json
 
-### Advanced Configuration
+"scripts": {
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+"build:dev": "env NODE_ENV=development webpack --config webpack.config.js",
 
-### Deployment
+"build:prod": "env NODE_ENV=production webpack --config webpack.config.js",
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+"test": "echo \"Error: no test specified\" && exit 1"
+},
 
-### `npm run build` fails to minify
+"scriptsComments": {
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+"build:dev": "Сначала при выполнении скрипта переменной NODE_ENV присвоится значение development, потом вызов webpack с файлом конфигурации webpack.config.js"
+},
+
+====
+
+Установка devServer
+
+https://webpack.js.org/configuration/dev-server/
+
+Использование
+
+https://webpack.js.org/guides/development/#using-webpack-dev-server
+
+https://github.com/webpack/webpack-dev-server
+
+https://webpack.js.org/api/webpack-dev-server/
+
+св-во hot
+
+https://webpack.js.org/configuration/dev-server/#devserverhot
+
+св-во open
+
+https://webpack.js.org/configuration/dev-server/#devserveropen
+
+Чтобы открыть хром
+
+open: { app: { name: 'google-chrome', }, },
+
+св-во port
+
+https://webpack.js.org/configuration/dev-server/#devserverport
+
+установка пакета
+
+npm install webpack-dev-server --save-dev
+
+====
+
+devtool - создает source-map
+
+https://webpack.js.org/configuration/devtool/
