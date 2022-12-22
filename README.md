@@ -1,5 +1,5 @@
-Учебная задача ежедневник. Настройка модулей webpack
-Настройка Webpack под React проект без SSR, HMR
+Учебная задача ежедневник c использованием ReactJs.
+Настройка Webpack под React проект без SSR, HMR.
 Установка React /не имеет отношения к настройке сборщика/ Источник инф. https://reactjs.org/ https://github.com/facebook/react https://www.npmjs.com/package/react
 
 npm i react v17.
