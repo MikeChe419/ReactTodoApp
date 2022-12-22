@@ -2,19 +2,12 @@
 Настройка Webpack под React проект без SSR, HMR
 Установка React /не имеет отношения к настройке сборщика/ Источник инф. https://reactjs.org/ https://github.com/facebook/react https://www.npmjs.com/package/react
 
-npm i react
-
-и react-dom Источник инф. https://www.npmjs.com/package/react-dom
-
-npm install react-dom
-
-вместе
-
-npm install react react-dom
+npm i react v17.
+npm install react-dom v
 
 Установка TS /не имеет отношения к настройке сборщика/ Источник инф. https://www.typescriptlang.org/download https://www.npmjs.com/package/typescript
 
-    npm install typescript --save-dev
+npm install typescript --save-dev
 Конфигурация TS Создание конфигурационного файла typescript - tsconfig.json
 
 tsc --init
